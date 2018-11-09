@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="grid-container">
+    <div class="documents">
+
+      <div class="title">MarkdownEditor</div>
+
+      
+        <div *ngFor="let document of documents">
+          <div class="item-document">
+          {{ document.name }}
+          </div>
+        </div>
+    
+
+    </div>
+    <div class="documents">
+      <textarea class="text-area" name="markdonw" id="markdonw-area" rows="30" placeholder="insert text" (keyup)="changeText($event.target.value)"></textarea>
+    </div>
+
+    <div class="documents">
+
+      <div class="textout" [innerHtml]="changedText"></div>
+
+    </div>
+
+  </div>
+</div>
