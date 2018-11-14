@@ -4,17 +4,32 @@
 
       <div class="title">MarkdownEditor</div>
 
-      
-        <div *ngFor="let document of documents">
-          <div class="item-document">
-          {{ document.name }}
+
+      <div *ngFor="let document of documents">
+        <a (click)="onClickDocument(document)">
+          <div [ngClass]="{'item-document': document.key != actualDocument.key, 
+                           'itemSelect-document': document.key == actualDocument.key}">
+            <img src="assets/img/file.png" class="image-document"> {{ document.name }}
+            <a (click)="onClickDelete(document)" class="content-delete">
+              <img src="assets/img/delete.png" class="image-delete">             
+            </a>
+            <a (click)="onClickSave(document)" class="content-save">              
+                <img src="assets/img/save.png" class="image-save"> 
+              </a>
           </div>
+        </a>
+      </div>
+      <a (click)="newDocument()">
+        <div [ngClass]="{'more-document': true }">
+          <img src="assets/img/more.png" class="image-more">
         </div>
-    
+      </a>
+
 
     </div>
     <div class="documents">
-      <textarea class="text-area" name="markdonw" id="markdonw-area" rows="30" placeholder="insert text" (keyup)="changeText($event.target.value)"></textarea>
+      <textarea [ngModel]="myTextArea" class="text-area" name="markdonw" id="markdonw-area" rows="30" placeholder="insert text"
+        (keyup)="changeText($event.target.value)"></textarea>
     </div>
 
     <div class="documents">
